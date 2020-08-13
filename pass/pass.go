@@ -25,7 +25,7 @@ func readInSalts() []string {
 	return strings.Split(str, "\n")
 }
 
-func HashString(str string) string {
+func hashString(str string) string {
 	bs := sha1.Sum([]byte(str))
 	return fmt.Sprintf("%x", bs)
 }
@@ -33,7 +33,7 @@ func HashString(str string) string {
 func CrackSha1Hash(str string) string {
 	passwords := readInPasswords()
 	for _, pass := range passwords {
-		if HashString(pass) == str {
+		if hashString(pass) == str {
 			return pass
 		}
 	}
